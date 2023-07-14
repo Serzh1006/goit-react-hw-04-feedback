@@ -10,6 +10,7 @@ export const App = () => {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
   const [total, setTotal] = useState(0);
+  const [percentage, setPercentage] = useState(0);
 
   const changeGood = () => {
     setGood(prevState => prevState + 1);
@@ -23,32 +24,23 @@ export const App = () => {
     setBad(prevState => prevState + 1);
   };
 
-  // countTotalFeedback = () => {
-  //   return good + neutral + bad;
-  // };
+  const countPositiveFeedbackPercentage = total => {
+    return (good * 100) / total;
+  };
 
-  // countPositiveFeedbackPercentage = total => {
-  //   return (good * 100) / total;
-  // };
-  const countStatistics = totalStat => {
-    setTotal(totalStat);
-    console.log('total: ', total);
+  const counterTotal = total => {
+    setTotal(total);
+    if (good !== 0) {
+      const totalPositive = countPositiveFeedbackPercentage(total);
+      setPercentage(totalPositive);
+    }
   };
 
   useEffect(() => {
     const totalStat = good + neutral + bad;
-    countStatistics(totalStat);
-    console.log('totalStat: ', totalStat);
-    console.log(good, neutral, bad);
+    counterTotal(totalStat);
   }, [good, neutral, bad]);
 
-  // addfeedback = option => {
-  //   this.setState(prevState => ({
-  //     [option]: prevState[option] + 1,
-  //   }));
-  // };
-
-  // const percentage = countPositiveFeedbackPercentage(total);
   return (
     <div className={css.app}>
       <Section title="Please leave feedback">
@@ -58,7 +50,7 @@ export const App = () => {
           changeBad={changeBad}
         />
       </Section>
-      {/* <Section title="Statistics">
+      <Section title="Statistics">
         {total !== 0 ? (
           <Statistics
             good={good}
@@ -70,7 +62,7 @@ export const App = () => {
         ) : (
           <Notification message="There is no feedback" />
         )}
-      </Section> */}
+      </Section>
     </div>
   );
 };
