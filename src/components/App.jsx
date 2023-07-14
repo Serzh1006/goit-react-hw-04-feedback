@@ -5,7 +5,7 @@ import Statistics from './statistics/Statistics';
 import Notification from './notification/Notification';
 import css from './app.module.css';
 
-class App extends Component {
+export class App extends Component {
   state = {
     good: 0,
     neutral: 0,
@@ -57,5 +57,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;
