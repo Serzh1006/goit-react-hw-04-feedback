@@ -1,0 +1,34 @@
+.statistics {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 130px;
+}
+
+.statItem {
+  display: flex;
+  justify-content: space-between;
+  color: rgb(100, 4, 63);
+}
+
+.good {
+  color: rgb(13, 199, 22);
+}
+
+.neutral {
+  color: rgb(204, 151, 82);
+}
+
+.bad {
+  color: brown;
+}
+
+.total {
+  color: blue;
+}
+
+.positive {
+  color: rgb(151, 9, 127);
+}
