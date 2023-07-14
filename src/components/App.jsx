@@ -39,7 +39,7 @@ export const App = () => {
   useEffect(() => {
     const totalStat = good + neutral + bad;
     counterTotal(totalStat);
-  }, [good, neutral, bad]);
+  });
 
   return (
     <div className={css.app}>
